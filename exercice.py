@@ -26,24 +26,45 @@ def contains_doubles(items: list) -> bool:
 
 def best_grades(student_grades: dict) -> dict:
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
-    return {}
+    best_student = dict()
+    for key, value in student_grades.items():
+        average = sum(value) / len(value)
+        if len(best_student) == 0 or list(best_student.values())[0] < average:
+            best_student = {key: average}
+    return best_student
 
 
 def frequence(sentence: str) -> dict:
     # TODO: Afficher les lettres les plus fréquentes
     #       Retourner le tableau de lettres
+    frequency = dict()
+    for letter in sentence:
+        frequency[letter] = sentence.count(letter)
 
-    return {}
+    sortedkeys = sorted(frequency, key=frequency.__getitem__, reverse=True)
+
+    for key in sortedkeys:
+        if frequency[key] > 5 and key != " ":
+            print(f"La lettre {key} revient {frequency[key]} fois.")
+
 
 
 def get_recipes():
     # TODO: Demander le nom d'une recette, puis ses ingredients et enregistrer dans une structure de données
-    pass
+    recipe_name = input("Entrez le nom de votre recette: ")
+    ingredients = input("Entrez la liste d'ingrédients de la recette en les séparant par une virgule: ").split(",")
+    return {recipe_name: ingredients}
 
 
-def print_recipe(ingredients) -> None:
+def print_recipe(ingredients: dict) -> None:
     # TODO: Demander le nom d'une recette, puis l'afficher si elle existe
-    pass
+    recipe_name = input("Entrez le nom d'une recette: ")
+    if recipe_name in ingredients:
+        print(ingredients[recipe_name])
+    else:
+        print("La recette demandée n'existe pas.")
+        print(f"Les recettes existantes sont: {list(ingredients.keys())}")
+        print_recipe(ingredients)
 
 
 def main() -> None:
