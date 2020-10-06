@@ -47,6 +47,8 @@ def frequence(sentence: str) -> dict:
         if frequency[key] > 5 and key != " ":
             print(f"La lettre {key} revient {frequency[key]} fois.")
 
+    return frequency
+
 
 
 def get_recipes():
