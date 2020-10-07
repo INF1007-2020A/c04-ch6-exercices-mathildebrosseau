@@ -41,10 +41,10 @@ def frequence(sentence: str) -> dict:
     for letter in sentence:
         frequency[letter] = sentence.count(letter)
 
-    sortedkeys = sorted(frequency, key=frequency.__getitem__, reverse=True)
+    sorted_keys = sorted(frequency, key=frequency.__getitem__, reverse=True)
 
-    for key in sortedkeys:
-        if frequency[key] > 5 and key != " ":
+    for key in sorted_keys:
+        if frequency[key] > 5
             print(f"La lettre {key} revient {frequency[key]} fois.")
 
     return frequency
